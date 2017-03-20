@@ -1,0 +1,60 @@
+.container {
+	width: 75%;
+	margin: 0 auto;
+	padding: 15px;
+	background: rgb(243, 243, 243);
+	font-family: Helvetica, sans-serif;
+}
+
+#header {
+	background: rgb(9, 202, 159);
+	padding: 20px 0;
+	margin: 0;
+	text-align: center;
+	font-weight: normal;
+	color: rgb(255, 255, 255);
+}
+
+.nav {
+	padding: 30px 10px;
+	text-align: center;
+}
+
+.nav a {
+	text-decoration: none;
+	margin: 0 20px;
+}
+
+.destination {
+	padding: 25px;
+	margin: 0 0 30px 0;
+}
+
+.destination h1 {
+	text-align: center;
+	font-weight: bold;
+}
+
+#maui, #aspen {
+	background: rgb(196, 222, 252);
+}
+
+#reykjavic {
+	background: rgb(194, 242, 227);
+}
+
+.image {
+	text-align: center;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.image img {
+	max-width: 100%;
+}
+
+#footer {
+	margin: 0;
+	text-align: center;
+	font-weight: bold;
+}
