@@ -1,0 +1,167 @@
+/*
+// FONT FAMILY HELPERS :)
+// font-family: 'Oswald', sans-serif;
+// font-family: 'Merriweather', serif;
+// font-family: 'Source Sans Pro', sans-serif;
+*/
+
+body {
+	margin: 0;
+	font-family: 'Source Sans Pro', sans-serif;
+	background: rgb(238,238,238);
+}
+
+.container {
+	margin: 0 auto;
+	width: 960px;
+}
+
+header {
+	background: black;
+	overflow: auto;
+	border-bottom: solid 5px rgb(255, 254, 0);
+}
+
+header h1 {
+	font-family: 'Merriweather', serif;
+	font-size: 1.5em;
+	font-weight: 400;
+	color: rgb(255, 254, 0);
+	float: left;
+	width: 400px;
+}
+
+header nav {
+	float: right;
+	margin-top: 20px;
+}
+
+header nav a {
+	color: white;
+	text-decoration: none;
+	font-size: 20px;
+	margin-left: 15px
+}
+
+#tagline {
+	background: #C6C6C6;
+	font-family: 'Merriweather', sans-serif;
+	font-size: 25px;
+	font-style: italic;
+	text-align: center;
+	margin: 0;
+	height: 50px;
+	padding: 15px 0 0 0;
+}
+
+.strikethrough {
+	color: rgb(153, 153, 153);
+	text-decoration: line-through;
+}
+
+.underline {
+	border-bottom: solid 3px rgb(255, 254, 0);
+}
+
+.image-section {
+	background: url(../img/coworking.jpg) fixed;
+	background-position: center;
+	background-size: cover;
+}
+
+#match {
+	width: 350px;
+	float: right;
+	background: rgba(241, 241, 241, .8);
+	padding: 30px;
+	display: inline-block;
+	margin: 30px 0;
+}
+
+#match h3 {
+	font-family: 'Oswald', sans-serif;
+	font-size: 35px;
+	margin: 0;
+}
+
+#match p {
+	margin: 10px 0 0 0;
+	font-size: 20px;
+}
+
+.button {
+	margin: 30px auto 0 auto;
+	font-family: 'Oswald', sans-serif;
+	font-size: 20px;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 0;
+	border-radius: 10px;
+	box-shadow: 0 2px 1.5px rgb(153, 153, 153);
+	height: 50px;
+}
+
+.button a {
+	text-decoration: none;
+	color: black;
+	display: block;
+	line-height: 2.5;
+	font-weight: 700;
+}
+
+.yellow-background {
+	background: rgb(255, 254, 0);
+}
+
+.grey-background {
+	background: #C6C6C6;
+}
+
+.options {
+	margin: 30px auto;
+}
+
+.callout {
+	width: 292px;
+	float: left;
+	padding: 10px 20px;
+	border-right: solid .5px rgb(200, 200, 200);
+}
+
+.callout h2 {
+	font-family: 'Merriweather', serif;
+	font-size: 25px;
+	margin: 8px 0;
+}
+
+.callout p {
+	font-size: 20px;
+	margin: 0;
+}
+
+.flush-left {
+	padding: 10px 20px 10px 0;
+}
+
+.flush-right {
+	padding: 10px 0 10px 20px;
+}
+
+.no-border {
+	border: none;
+}
+
+footer {
+	background: black;
+	color: white;
+	font-size: 20px;
+	padding: 20px 0;
+}
+
+.clear-fix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
