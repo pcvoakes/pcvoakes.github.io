@@ -2,3 +2,13 @@ body {
 	background: black;
 	color: white;
 }
+
+.container {
+	width: 75%;
+	margin: 0 auto;
+	background: rgb(243, 243, 243);
+}
+
+h1 {
+	color: blue;
+}
