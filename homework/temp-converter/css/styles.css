@@ -1,0 +1,51 @@
+body {
+	font-family: 'Cabin', sans-serif;
+	margin: 0;
+}
+
+.container {
+	padding: 200px 0;
+}
+
+.temp-box {
+	text-align: center;
+	margin: 0 auto;
+	border: solid 1px black;
+	width: 420px;
+	height: 150px;
+	background: rgba(240, 240, 240, 0.4);
+}
+
+.temp-input {
+	width: 200px;
+	float: left;
+	padding: 43px 0;
+}
+
+.temp-input h2 {
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+
+.temp-input input {
+	font-family: 'Cabin', sans-serif;
+	font-size: 20px;
+	height: 25px;
+	width: 120px;
+}
+
+.equals {
+	float: left;
+	font-size: 40px;
+}
+
+.equals p {
+	margin: 0;
+	padding: 64px 0;
+}
+
+.clearfix:after {
+	  content:"";
+	  display:table;
+	  clear:both;
+	}

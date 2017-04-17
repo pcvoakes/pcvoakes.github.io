@@ -1,0 +1,39 @@
+body {
+	margin: 0;
+	font-family: 'Exo 2', sans-serif;
+}
+
+.container {
+	width: 1160px;
+	margin: 0 auto;
+}
+
+header {
+	margin: 0 auto;
+	text-align: center;
+	font-weight: 800;
+}
+
+button {
+	height: 40px;
+	width: 100px;
+}
+
+.left-control {
+	width: 375px;
+	float: left;
+	overflow: auto;
+}
+
+.section {
+	border: solid 4px black;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.right-control {
+	width: 750px;
+	float: right;
+	overflow: auto;
+}
