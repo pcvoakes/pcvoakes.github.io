@@ -22,9 +22,22 @@ var ctx = $('#effects-grid');
 var grid = new Chart(ctx, {
 	type: 'line',
 	data: {
-		labels: ['Zilch', 'Chill', 'Tame', 'Neat', 'Wild', 'Too Far'],
+		xLabels: ['Zilch', 'Chill', 'Tame', 'Neat', 'Wild', 'Too Far'],
+		xAxes: [{
+			beginAtZero:false,
+		}],
+		//yLabels: ['Nada', 'Chill', 'Tame', 'Neat', 'Wild', 'Too Far'],
 	},
 	options: {
+		scales: {
+			yAxes: [{
+				beginAtZero: false,
+				labels: ['Zilch', 'Chill', 'Tame', 'Neat', 'Wild', 'Too Far'],
+			}],
+		},
+		//yAxes: [{
+		//	beginAtZero: false,
+		//}],
 		defaultFontFamily: 'Exo 2', 
 		responsive: true,
 		maintainAspectRatio: true,
