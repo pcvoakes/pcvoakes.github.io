@@ -1,3 +1,4 @@
+
 var baseTone = new Howl({
   src: ['audio/base-tone-low.wav'],
   autoplay: false,
@@ -6,10 +7,29 @@ var baseTone = new Howl({
 });
 
 var toneWad = new Wad({
-	source:'/audio/base-tone-low.wav',
-	volume: 0.5,
+	source:'../audio/base-tone-low.wav',
+	volume: 0.25,
 	loop: true,
-	autoplay: false,
+	delay: {
+		delayTime: .25,
+		wet: 0.25,
+		feedback: .75,
+	},
+	tremolo: {
+		shape: 'triangle',
+		magnitude: 1,
+		speed: 1.5,
+		attack: 0,
+	},
+	tuna: {
+		Overdrive: {
+			outputGain: 0.75,
+			drive: 0.5,
+			curveAmount: 1,
+			algorithmIndex: 2,
+			bypass: 0,
+		},
+	}
 })
 
 var sineTest = new Wad({
@@ -50,7 +70,6 @@ var grid = new Chart(ctx, {
 
 $('#sine').click(function() {
 	sineTest.play({
-		loop: true,
 		tuna: {
 			Chorus: {
 				intensity: 1,
@@ -75,5 +94,23 @@ $('#start').click(function () {
 
 $('#start-wad').click(function () {
 	toneWad.play();
+})
+
+$('#filter').click(function () {
+	var tuna = new Tuna(Howler.ctx);
+	var phaser = new tuna.Phaser({
+	rate: 1.2,
+	depth: 0.7,
+	feedback: 0.3,
+	stereoPhase: 70,
+	baseModulationFrequency: 700,
+	bypass: 0,
+	});
+	var input = Howler.ctx.createGain();
+	var output = Howler.ctx.createGain();
+	input.connect(phaser);
+	phaser.connect(output);
+	console.log(phaser);
+	console.log(input);
 })
 
