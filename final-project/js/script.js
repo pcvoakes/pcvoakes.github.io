@@ -1,6 +1,6 @@
-//Only using Tuna and Howler
+//Only sing Tuna JS library
 
-//set up OScillator node to start auiod stream
+//set up OScillator node to start audio stream
 // set up gain nodes for each of the Tuna effects
 //establish the graph
 //write a function to capture the cooridinates within the graph
@@ -27,7 +27,7 @@ var tremolo = new tuna.Tremolo({
 	bypass: 1,
 })
 var phaser = new tuna.Phaser({
-	rate: 8,
+	rate: 0,
 	depth: 0.75,
 	feedback: 0.6,
 	stereoPhase: 60,
@@ -42,16 +42,20 @@ var distortion = new tuna.Overdrive({
 	bypass: 1,
 })
 
+//create nodes to provide a space in audio path to connect effect nodes
 var gateNodeStart = audioCtx.createGain();
 var gateNodeEnd = audioCtx.createGain();
 gateNodeEnd.gain.value = 0.25;
 
+//create node for oscillioscope visualizer
+var analyser = audioCtx.createAnalyser();
 
-//Connect Gate Node to complete audio chain
+//Connect Gate Nodes to default to a complete audio chain
 gateNodeStart.connect(gateNodeEnd);
-gateNodeEnd.connect(audioCtx.destination);
+gateNodeEnd.connect(analyser);
+analyser.connect(audioCtx.destination)
 
-//Variable to set play button on or off
+//Variable to set play button on or off and start the oscillator
 var playing = false;
 oscillator.start();
 
@@ -59,16 +63,6 @@ oscillator.start();
 var curX;
 var curY;
 var rate
-
-$('#start').click(function() {
-	if(playing === false) {
-		playing = true
-		buttonOn(this);
-	} else {
-		playing = false;
-		buttonOff(this);
-	}
-})
 
 //function to toggle effects on or off
 function effectToggle(effectNode) {
@@ -91,32 +85,48 @@ function buttonOff(button) {
 	$(button).removeClass('gradient');
 }
 
+$('#start').click(function() {
+	if(playing === false) {
+		playing = true
+		buttonOn(this);
+	} else {
+		playing = false;
+		buttonOff(this);
+	}
+})
+
 // Sets the effects button to toggle effects on or off
-$('#tremolo').click(effectToggle(tremolo));
+$('#tremolo').click(function () {
+	effectToggle(tremolo);
+	$(this).toggleClass('gradient');
+});
 
 $('#chorus').click(function() {
 	effectToggle(chorus);
+	$(this).toggleClass('gradient');
 })
 
 $('#phaser').click(function() {
 	effectToggle(phaser);
+	$(this).toggleClass('gradient');
 })
 
 $('#overdrive').click(function() {
 	effectToggle(distortion);
+	$(this).toggleClass('gradient');
 })
 
 //Sets playback of sound to start only when mouse moves over the effects grid
 $('#effects-grid').mouseenter(function() {
 	if (playing === true) {
 		oscillator.connect(gateNodeStart);
-		gateNodeEnd.connect(audioCtx.destination);
+		gateNodeEnd.connect(analyser);
 	} 
 })
 
 $('#effects-grid').mouseout(function() {
 	if (playing === true) {
-		gateNodeEnd.disconnect(audioCtx.destination);
+		gateNodeEnd.disconnect(analyser);
 	}
 })
 
@@ -158,21 +168,4 @@ var grid = new Chart(ctx, {
 	}
 })
 
-//var data = {
-//	xLabels: ['Zilch', 'Tame', 'Neat', 'Wild', 'Too Far'],
-//}
-/*
-$('#sine').click(function() {
-	sineTest.play({
-		tuna: {
-			Chorus: {
-				intensity: 1,
-				rate: 8,
-				stereoPhase: 57,
-				bypass: 0,
-			}
-		}
-	})
-})
-*/
 
