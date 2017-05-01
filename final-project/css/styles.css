@@ -37,3 +37,12 @@ button {
 	float: right;
 	overflow: auto;
 }
+
+.gradient {
+	background-image: linear-gradient(
+		center,
+		#FF6139,
+		#FF0200);
+	background-color: #FF0200;
+
+}
