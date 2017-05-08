@@ -1,11 +1,12 @@
 body {
 	margin: 0;
 	font-family: 'Exo 2', sans-serif;
+	background-color: rgb(235, 234, 235);
 }
 
 .container {
 	width: 1160px;
-	margin: 0 auto;
+	margin: 3% auto;
 }
 
 header {
@@ -17,32 +18,167 @@ header {
 button {
 	height: 40px;
 	width: 100px;
+	border-radius: 5px;
+	margin: 0 auto;
+	display: block;
+}
+
+.button-text {
+	display: none;
+	font-family: 'Exo 2', sans-serif;
+	font-size: 15px;
+}
+
+.main-section {
+	display: flex;
+	justify-content: space-between;
 }
 
 .left-control {
-	width: 375px;
-	float: left;
-	overflow: auto;
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#start {
+	width: 200px;
+}
+
+.tone-effects {
+	display: flex;
+	justify-content: space-between;
+	width: 70%;
+	margin: 0 auto;
 }
 
 .section {
 	border: solid 4px black;
 	border-radius: 10px;
 	padding: 10px;
-	margin-bottom: 20px;
+}
+
+.left-effects {
+	display: flex;
+	flex-direction: column
+}
+
+.left-effects h3{
+	text-align: center;
+	margin-top: 0;
+}
+
+.tone-buttons {
+	display: flex;
+	flex-direction: column;
+}
+
+.button-title {
+	text-align: center;
+	margin-top: 0;
 }
 
 .right-control {
-	width: 750px;
-	float: right;
-	overflow: auto;
+	width: 67%;
+}
+
+.section-title {
+	margin: 0;
+}
+
+.section-title h2 {
+	display: flex;
+	justify-content: space-around;
+	width: 50%;
+	text-transform: uppercase;
+	margin: 0 auto;
+	align-items: center;
+}
+
+.one {
+	font-size: 50px;
+}
+
+.two {
+	font-size: 45px;
+}
+
+.three {
+	font-size: 40px;
+}
+
+.four {
+	font-size: 35px;
+}
+
+.five {
+	font-size: 30px;
+}
+
+.six {
+	font-size: 25px;
+}
+
+.seven {
+	font-size: 20px;
+}
+
+.section-title h2 {
+	margin-bottom: .25em;
+	margin-top: 0;
+}
+
+.effect-grid {
+	border: 4px black solid;
+	border-radius: 20px;
+	background-color: rgb(46,19,114);
+}
+
+.instructions {
+	margin-top: 10px;
 }
 
 .gradient {
-	background-image: linear-gradient(
-		center,
-		#FF6139,
-		#FF0200);
-	background-color: #FF0200;
+	background-color: #FF0900;
+	background: radial-gradient(circle, #FF0900 10%, transparent 100%), #CC0700;
+  	background: -webkit-radial-gradient(circle, #FF0900 10%, transparent 100%), #CC0700;
+  	background: -moz-radial-gradient(circle, #FF0900 10%, transparent 100%), #CC0700;
+}
 
+@media (max-width: 1200px) {
+	.container {
+		width: 100%;
+	}
+	.main-section {
+		display: block;
+	}
+	.left-control, .tone-buttons, .left-effects {
+		flex-direction: row;
+	}
+	.left-control {
+		width: 90%;
+		margin: 0 auto;
+		flex-direction: row;
+		border-bottom: solid 1px black;
+		align-items: flex-end;
+	}
+	.left-control p {
+		display: none;
+	}
+	.button-text {
+		display: block;
+	}
+	.start, .tone-effects {
+		margin-right: 20px;
+	}
+	.section {
+		border: none;
+	}
+	.left-effects h3 {
+		display: none;
+	}
+	.right-control {
+		margin: 0 auto;
+		width: 90%;
+	}
 }

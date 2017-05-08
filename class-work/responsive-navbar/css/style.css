@@ -1,0 +1,70 @@
+.container {
+	margin: 0 auto;
+	width: 85%;
+}
+
+header {
+	background-color: black;
+	overflow: hidden;
+	text-transform: uppercase;
+	padding: 10px 0;
+}
+
+header h1 {
+	font-size: 35px;
+	float: left;
+	color: white;
+}
+
+header nav {
+	float: right;
+	margin-top: 8px;
+}
+
+header nav a {
+	display: inline-block;
+	color: white;
+	text-decoration: none;
+	font-size: 20px;
+	margin-left: 50px;
+}
+
+#burger {
+	display: none;
+	float: right;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+#mobile-nav {
+	display: none;
+	background-color: black;
+	width: 45%;
+	float: right;
+}
+
+#mobile-nav a {
+	display: block;
+	text-align: left;
+	font-size: 30px;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-bottom: 1px solid white;
+	color: white;
+	text-transform: lowercase;
+}
+
+@media (max-width: 950px) {
+	#large-nav {
+		display: none;
+	}
+	#burger {
+		display: block;
+	}
+}
+
+@media (min-width: 950px){
+	#mobile-nav {
+		display: none;
+	}
+}
