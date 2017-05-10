@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-	width: 1160px;
+	width: 90%;
 	margin: 3% auto;
 }
 
@@ -13,6 +13,12 @@ header {
 	margin: 0 auto;
 	text-align: center;
 	font-weight: 800;
+}
+
+header h1 {
+	font-size: 50px;
+	margin-top: 10px;
+	transition: all 1s;
 }
 
 button {
@@ -138,6 +144,10 @@ button {
 	margin-top: 10px;
 }
 
+ul {
+	list-style: decimal inside none;
+}
+
 .gradient {
 	background-color: #FF0900;
 	background: radial-gradient(circle, #FF0900 10%, transparent 100%), #CC0700;
@@ -147,16 +157,23 @@ button {
 
 @media (max-width: 1200px) {
 	.container {
-		width: 100%;
+		width: 90%;
 	}
 	.main-section {
 		display: block;
 	}
 	.left-control, .tone-buttons, .left-effects {
 		flex-direction: row;
+		padding: 0;
+	}
+	button {
+		margin: 0 5px 5px 0;
+	}
+	#start {
+		width: 100px;
 	}
 	.left-control {
-		width: 90%;
+		width: 100%;
 		margin: 0 auto;
 		flex-direction: row;
 		border-bottom: solid 1px black;
@@ -170,6 +187,8 @@ button {
 	}
 	.start, .tone-effects {
 		margin-right: 20px;
+		border-right: solid 1px black;
+		padding: 0 15px 0 0;
 	}
 	.section {
 		border: none;
@@ -179,6 +198,31 @@ button {
 	}
 	.right-control {
 		margin: 0 auto;
-		width: 90%;
+		width: 100%;
 	}
+}
+
+@media (max-width: 624px) {
+	header h1 {
+		margin-top: 5px;
+		font-size: 40px;
+	}
+	.tone-effects, .left-control, .start {
+		border: none;
+	}
+	.left-control {
+		display: block;
+		margin: 0 auto;
+		width: 50%;
+	}
+	.tone-buttons, .left-effects {
+		justify-content: center;
+	}
+	.tone-effects {
+		justify-content: flex-start;
+	}
+	.section-title {
+		display: none;
+	}
+
 }

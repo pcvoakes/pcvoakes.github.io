@@ -34,15 +34,18 @@ var distortion = new tuna.Overdrive({
 var gateNodeEnd = audioCtx.createGain();
 gateNodeEnd.gain.value = 0.5;
 
-//create node for oscillioscope visualizer
+//create analyser node for visualizer waveform data
 var analyser = audioCtx.createAnalyser();
 
 
-//Variable to set play button on or off and start the oscillator
+//Variable to set play button on or off and start the oscillator and Whistle and Noodle modes
 var playing = false;
 var noteChange = false;
+var whistler = false;
 
+//Data arrays for Noodler and Whistler nodes
 var scale = [440, 493.88, 554.37, 587.33, 659.25, 739.99, 783.99, 830.61, 880,]
+var highScale = [880, 1108.73, 1174.76, 1318.51, 1479.98, 1760]
 
 //Connect Audio Nodes to complete audio chain
 distortion.connect(phaser);
@@ -52,27 +55,35 @@ analyser.connect(audioCtx.destination)
 
 oscillator.start();
 
-//Set up the Waveform oscillioscope canvas
+//Set up the waveform visualizer canvas
 var canvas = document.querySelector('#effects-grid');
 var canvasCtx = canvas.getContext('2d');
 var intendedWidth = document.querySelector('.effect-grid').clientWidth;
-canvas.setAttribute('width',intendedWidth);
+canvas.setAttribute('width', intendedWidth);
 var drawVisual;
 
 //variables for width and height of visualizer
-WIDTH = canvas.width;
-HEIGHT = canvas.height;
+var WIDTH = canvas.width;
+var HEIGHT = canvas.height;
+
+// Dynamically resize the canvas with window resize
+$(window).resize(function () {
+	var intendedWidth = document.querySelector('.effect-grid').clientWidth;
+	// var intendedWidth = $('.effect-grid').width();	
+	canvas.setAttribute('width', intendedWidth);
+	WIDTH = canvas.width;
+})
 
 
-//Oscillioscope visualizer function
+//Visualizer function
 function waveScope () {
-
+	//waveform data to use in the visualizer
 	analyser.fftSize = 2048;
 	var bufferLength = analyser.frequencyBinCount;
 	var dataArray = new Uint8Array(bufferLength);
 
 	canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
-
+	//function to draw the waveform in the canvas
 	function draw () {
 		drawVisual = requestAnimationFrame(draw);
 
@@ -124,6 +135,7 @@ function effectToggle(effectNode) {
 	}
 }
 
+//Turning the Start button on or off
 $('#start').click(function () {
 	if (playing === false) {
 		playing = true;
@@ -145,13 +157,35 @@ $('#overdrive').click(function() {
 })
 
 $('#notes').click(function () {
-	if (noteChange === false) {
+	if (noteChange === false && whistler === false) {
 		noteChange = true;
-	} else {
+		$(this).addClass('gradient');
+	} else if (noteChange === true && whistler === false) {
 		noteChange = false;
+		$(this).removeClass('gradient');
 		oscillator.frequency.value = 440;
+	} else if (noteChange === false && whistler === true) {
+		noteChange = true;
+		whistler = false;
+		$(this).addClass('gradient');
+		$('#whistler').removeClass('gradient');
 	}
-	$(this).toggleClass('gradient');
+})
+
+$('#whistler').click(function() {
+	if (whistler === false && noteChange === false) {
+		whistler = true;
+		$(this).addClass('gradient');
+	} else if (whistler === true && noteChange === false) {
+		whistler = false;
+		$(this).removeClass('gradient');
+		oscillator.frequency.value = 440;
+	} else if (whistler === false && noteChange === true) {
+		whistler = true;
+		noteChange = false;
+		$(this).addClass('gradient');
+		$('#notes').removeClass('gradient');
+	}
 })
 
 //Sets playback of sound to start only when mouse moves over the effects grid
@@ -163,10 +197,11 @@ $('#effects-grid').mouseenter(function() {
 	} 
 })
 
+//Sets playback to end when mouse leaves the effects grid
 $('#effects-grid').mouseout(function() {
 	if (playing === true) {
 		gateNodeEnd.disconnect(analyser);
-		canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+		canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);	
 	}
 })
 
@@ -178,12 +213,13 @@ $('#effects-grid').mousemove(function() {
 	curve = (curX/curY) * 0.11;
 	phaser.rate = rate;
 	distortion.curveAmount = curve;
-	if (noteChange === true) {
-		if ((curX + curY) % 10 === 0) {
-			var randomNum = Math.floor((Math.random() * scale.length));
-			oscillator.frequency.value = scale[randomNum];
-		}
+	if (noteChange === true && (curX + curY) % 10 === 0) {
+		var randomNum = Math.floor((Math.random() * scale.length));
+		oscillator.frequency.value = scale[randomNum];
+	} else if (whistler === true && (curX + curY) % 2 === 0) {
+		var randomHighNum = Math.floor((Math.random() * highScale.length));
+		oscillator.frequency.value = highScale[randomHighNum];
 	}	
-	// console.log();
 })
+
 
