@@ -18,7 +18,7 @@ header {
 header h1 {
 	font-size: 50px;
 	margin-top: 10px;
-	transition: all 1s;
+	transition: all 500ms;
 }
 
 button {
@@ -162,6 +162,10 @@ ul {
 	.main-section {
 		display: block;
 	}
+	header h1 {
+		margin-top: 5px;
+		font-size: 40px;
+	}
 	.left-control, .tone-buttons, .left-effects {
 		flex-direction: row;
 		padding: 0;
@@ -203,10 +207,6 @@ ul {
 }
 
 @media (max-width: 624px) {
-	header h1 {
-		margin-top: 5px;
-		font-size: 40px;
-	}
 	.tone-effects, .left-control, .start {
 		border: none;
 	}
