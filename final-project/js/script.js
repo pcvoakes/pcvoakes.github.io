@@ -18,8 +18,8 @@ var phaser = new tuna.Phaser({
 	rate: 0,
 	depth: .75,
 	feedback: 0.75,
-	stereoPhase: 20,
-	baseModulationFrequency: 700,
+	stereoPhase: 180,
+	baseModulationFrequency: 500,
 	bypass: 1,
 })
 var distortion = new tuna.Overdrive({
@@ -156,6 +156,7 @@ $('#overdrive').click(function() {
 	$(this).toggleClass('gradient');
 })
 
+//functions for toggling the Whistler and Noodler nodes on/off
 $('#notes').click(function () {
 	if (noteChange === false && whistler === false) {
 		noteChange = true;
@@ -216,7 +217,7 @@ $('#effects-grid').mousemove(function() {
 	if (noteChange === true && (curX + curY) % 10 === 0) {
 		var randomNum = Math.floor((Math.random() * scale.length));
 		oscillator.frequency.value = scale[randomNum];
-	} else if (whistler === true && (curX + curY) % 2 === 0) {
+	} else if (whistler === true && (curX + curY) % 3 === 0) {
 		var randomHighNum = Math.floor((Math.random() * highScale.length));
 		oscillator.frequency.value = highScale[randomHighNum];
 	}	
